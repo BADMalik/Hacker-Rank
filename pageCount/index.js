@@ -1,5 +1,4 @@
 function pageCount(n, p) {
-  // Write your code here
   let startCount = 0;
   let endCount = 0;
 
