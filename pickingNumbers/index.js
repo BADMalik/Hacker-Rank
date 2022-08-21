@@ -12,7 +12,6 @@ function pickingNumbers(a) {
       subArray = [];
       start = data[i];
       subArray.push(data[i]);
-      broken = false;
     }
     if (i == data.length - 1) {
       response.push(subArray);
