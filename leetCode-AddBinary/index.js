@@ -33,6 +33,6 @@ var addBinary = function(a, b) {
     return ans
 
     console.log(a,b)
-
+    //https://leetcode.com/problems/add-binary/submissions/897978414/
     // return res;
 };
