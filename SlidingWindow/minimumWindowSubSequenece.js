@@ -1,56 +1,47 @@
 function minWindow(str1, str2) {
-  let mainStringLength = str1.length;
-  let subStringLength = str2.length;
-
-  /**
-   * Create pointers for both strings
-   */
-  let mainStringIndex = 0;
-  let subStringIndex = 0;
-  let subSequence = "";
-
-  let minSubSequenceLength = Number.MAX_SAFE_INTEGER;
-
-  let start = -1;
-  let end = -1;
-  while (mainStringIndex < mainStringLength) {
-    if (str1[mainStringIndex] === str2[subStringIndex]) {
-      if (subStringIndex === 0) {
-        start = mainStringIndex;
-      }
-
-      if (subStringIndex === subStringLength - 1) {
-        end = mainStringIndex;
-        if (end - start + 1 < minSubSequenceLength) {
-          minSubSequenceLength = end - start + 1;
-          subSequence = str1.substring(start, end + 1);
+  let sizeStr1 = str1.length;
+  let sizeStr2 = str2.length;
+  let minSubLen = Infinity;
+  let indexS1 = 0;
+  let indexS2 = 0;
+  let minSubsequence = "";
+  while (indexS1 < sizeStr1) {
+    if (str1[indexS1] === str2[indexS2]) {
+      indexS2++;
+      if (indexS2 === sizeStr2) {
+        let start = indexS1;
+        let end = indexS1;
+        indexS2--;
+        while (indexS2 >= 0) {
+          if (str1[start] === str2[indexS2]) {
+            indexS2--;
+          }
+          start--;
         }
-        subStringIndex = 0;
-        start = mainStringIndex + 1;
+        start++;
+        if (end - start + 1 < minSubLen) {
+          minSubLen = end - start + 1;
+          minSubsequence = str1.slice(start, end + 1);
+        }
+        indexS1 = start;
+        indexS2 = 0;
       }
-      subStringIndex++;
     }
-    mainStringIndex++;
+    indexS1++;
   }
-  if (subSequence.length === 0) {
-    return "No subsequence found";
-  } else {
-    return subSequence;
-  }
+  return minSubsequence;
 }
+
+// driver code
 function main() {
   const str1 = [
-    "abcdebddeabcdebdde",
+    "abcdedeaqdweq",
+    "abcdebdde",
     "fgrqsqsnodwmxzkzxwqegkndaa",
     "zxcvnhss",
     "alpha",
-    "beta",
   ];
-  const str2 = ["bde", "kzed", "css", "la", "ab"];
-
-  // let's uncomment the following test case and verify the result
-  // str1.push("abcdedeaqdweq");
-  // str2.push("aqeq");
+  const str2 = ["aqeq", "bde", "kzed", "css", "la"];
 
   for (let i = 0; i < str1.length; i++) {
     console.log(`${i + 1}. \tInput string: (${str1[i]}, ${str2[i]})`);
@@ -60,3 +51,26 @@ function main() {
 }
 
 main();
+
+// Solution summary
+// Initialize two indexes, indexS1 and indexS2, to zero for iterating both strings.
+
+// If the character pointed by indexS1 in str1 is the same as the character pointed by indexS2 in str2, increment both pointers. Otherwise, only increment indexS1.
+
+// Once indexS2 reaches the end of str2, initialize two new indexes (start and end). With these two indexes, we’ll slide the window backward.
+
+// Set start and end to indexS1.
+
+// If the characters pointed to by indexS2 and start are the same, decrement both of them. Otherwise, only decrement start.
+
+// Once, str2 has been discovered in str1 in the backward direction, calculate the length of the substring.
+
+// If this length is less than the current minimum length, update the minSubLen variable and the minSubsequence string.
+
+// Resume the search in the forward direction from start
+// +
+// 1
+// +1
+//  in str1.
+
+// Repeat until indexS1 reaches the end of str1.
