@@ -1,8 +1,13 @@
 function getUser(username, callback) {
   // Simulating asynchronous operation with setTimeout
   setTimeout(() => {
-    console.log("User fetched");
-    callback(null, { id: 1, username: username });
+    // Let's say there's an error when the username is 'BadUser'
+    if (username === "BadUser") {
+      callback(new Error("Failed to fetch user"));
+    } else {
+      console.log("User fetched");
+      callback(null, { id: 1, username: username });
+    }
   }, 1000);
 }
 
@@ -21,9 +26,9 @@ function getComments(postId, callback) {
 }
 
 // Fetch user
-getUser("JohnDoe", (err, user) => {
+getUser("BadUser", (err, user) => {
   if (err) {
-    console.log("Error: ", err);
+    console.log("Error: ", err.message);
     return;
   }
 
