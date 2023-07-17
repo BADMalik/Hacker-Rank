@@ -10,6 +10,7 @@ function zap(num, callback) {
     } else {
       fooResult = result;
       if (barResult !== undefined) {
+        console.log("foo 2");
         callback(null, fooResult * barResult);
       }
     }
@@ -23,6 +24,7 @@ function zap(num, callback) {
     } else {
       barResult = result;
       if (fooResult !== undefined) {
+        console.log("bar 2");
         callback(null, fooResult * barResult);
       }
     }
