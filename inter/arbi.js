@@ -10,30 +10,19 @@ let data = [
   [4, 1],
   [5, 1],
   [6, 1],
-  [6, 0],
 ];
 
-let obj = {};
+const checkValidPairs = (data) => {
+  let map = new Map();
 
-data.forEach((e, i) => {
-  if (obj[e[0]]) {
-    if (obj[e[0]][e[1]]) {
-      obj[e[0]][e[1]]++;
-    } else {
-      obj[e[0]][e[1]] = 1;
-    }
-  } else {
-    obj[e[0]] = {};
-    obj[e[0]][e[1]] = 1;
-  }
-});
-
-let result;
-for (const key in obj) {
-  if (Object.hasOwnProperty.call(obj, key)) {
-    result = obj[key][0] === obj[key][1];
-    if (!result) {
-      break;
+  for (let i = 0; i < data.length; i++) {
+    let key = data[i][0];
+    let value = data[i][1];
+    if (map.has(key)) {
+      if (map.get(key) === true) {
+        continue;
+      } else {
+      }
     }
   }
-}
+};
