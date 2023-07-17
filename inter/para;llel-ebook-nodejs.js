@@ -23,3 +23,16 @@ async.parallel(
     console.log(results);
   }
 );
+async.parallel(
+  {
+    short: shortTimeFunction,
+    medium: mediumTimeFunction,
+    long: longTimeFunction,
+  },
+  function (err, results) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(results);
+  }
+);
