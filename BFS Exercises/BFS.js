@@ -43,7 +43,7 @@ function BFS(graph, v, discovered) {
   while (q.length !== 0) {
     // dequeue front node and print it
     v = q.shift();
-    console.log({ queue: q });
+    console.log({ pop: v, queue: q });
     result.push(v);
     // check if graph.adjList[v] is defined before iterating
     if (graph.adjList[v]) {
