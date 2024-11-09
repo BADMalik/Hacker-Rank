@@ -11,7 +11,10 @@ var coinChange = function (coins, amount) {
 
   for (let coin of coins) {
     // console.log({dp})
-    ///dp[i - coin] sub tract the coin value, 
+    ///dp[i - coin] sub tract the coin value, the remaining is already in the dp and add one as it would be the coin itself
+    // e.g we need to make 11
+    /// coin is 1
+    // so we would need dp[10] which would be acheived by subtracting the coin value and adding one as it would be the coin itself
     for (let i = coin; i <= amount; i++) {
       console.log(
         `i ${i},  coin ${coin}, dp[i-1] ${dp[i - 1]},  dp[i] ${
