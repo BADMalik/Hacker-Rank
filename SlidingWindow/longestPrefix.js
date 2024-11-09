@@ -11,7 +11,6 @@ var longestCommonPrefix = function(strs) {
      prefix = prefix.slice(0, -1); // Shorten the prefix by removing the last character
      if (prefix === "") return ""; // If prefix becomes empty, return an empty string
    }
-   console.log("wassup : ", prefix)
  }
 
  return prefix;
