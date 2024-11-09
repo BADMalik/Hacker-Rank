@@ -9,6 +9,7 @@ function getAllSubstrings(str) {
       results.push(str.slice(i, j));
     }
   }
+  console.log({results})
   for (let i = 0; i < results.length; i++) {
     if (results[i].length < longest.length) {
       continue;
@@ -29,5 +30,5 @@ function getAllSubstrings(str) {
   return longest;
 }
 
-var theString = "aeeeeeea";
+var theString = "aeeebeeea";
 console.log(getAllSubstrings(theString));
