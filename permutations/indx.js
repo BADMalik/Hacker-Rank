@@ -16,6 +16,7 @@ var dfspermute = function (nums) {
       if (!visited[i]) {
         // Pick the choice
 
+        
         console.log({ level, visited, subset, i }, "initial\n");
         visited[i] = true;
         subset.push(nums[i]);
