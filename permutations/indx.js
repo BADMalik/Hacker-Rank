@@ -1,39 +1,39 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-var permute = function (nums) {
-  const result = [];
+// console.log(permute([1, 2, 3]));
 
-  const backtrack = (current, remaining) => {
-    console.log("NEW ->->->->->->->", { remaining, current });
-    if (remaining.length === 0) {
-      console.log({ slice: current.slice() });
-      result.push(current.slice());
+var dfspermute = function (nums) {
+  const res = [];
+  const visited = [];
+
+  const dfs = (subset) => {
+    // console.log({ subset });
+    if (subset.length === nums.length) {
+      console.log({ nums, visited, subset }, "reaced \n");
+      res.push([...subset]); // Make a copy of subset
       return;
     }
-    console.log(
-      "================================================================ "
-    );
-    for (let i = 0; i < remaining.length; i++) {
-      current.push(remaining[i]);
-      console.log({ remaining });
-      let firstHalf = remaining.slice(0, i);
-      let secondHalf = remaining.slice(i + 1);
-      console.log({ current, firstHalf, secondHalf, i });
-      backtrack(current, firstHalf.concat(secondHalf));
-      console.log("++++++++++++++++++++++++++++++++++++++++++++++++", {
-        i,
-        current,
-        remaining,
-        result,
-      });
-      current.pop();
+    for (let i = 0; i < nums.length; i++) {
+      console.log({ nums, visited, subset, i }, "\n");
+      if (!visited[i]) {
+        // Pick the choice
+
+        console.log({ nums, visited, subset, i }, "initial\n");
+        visited[i] = true;
+        subset.push(nums[i]);
+        console.log({ visited, subset, i }, "before\n");
+
+        // console.log({ subset, nums });
+        dfs(subset);
+
+        console.log({ visited, subset, i }, "after\n");
+        // Undo the choice
+        visited[i] = false;
+        subset.pop();
+      }
     }
   };
 
-  backtrack([], nums);
-  return result;
+  dfs([]);
+  return res;
 };
 
-console.log(permute([1, 2, 3]));
+console.log({ phind: dfspermute([4, 5, 3]) });

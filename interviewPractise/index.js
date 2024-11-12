@@ -305,7 +305,7 @@ function flatten(ary) {
 function currySum( a) {
    
   return function (b) {
-    
+    console.log({a,b})
     if (b) {
       return currySum(a+b) 
     }
@@ -316,13 +316,13 @@ function currySum( a) {
 const currying = a => b => b ? currying(a+b) : a
 
 const es6CurrySUm = (a) => (b) => b ? es6CurrySUm(a+b) : a
-console.log({response : es6CurrySUm(2)(3)(4)()})
+console.log({response : currySum(2)(3)(4)()})
 
 
 const data = [1,3, [[[4,3], 5,6], 7],[[[[[[53]]]]]]]
 
 
-const flatten = array => array.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), [])
+// const flatten = array => array.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), [])
 
 
 

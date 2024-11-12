@@ -41,19 +41,15 @@ var addTwoNumbers = function (l1, l2) {
       l2 = l2.next;
     }
 
-    console.log({ sum });
     // Calculate the new carry and the digit to store in the current node
     carry = Math.floor(sum / 10); // Carry for next iteration
-    console.log({ carry });
     let digit = sum % 10; // The digit to store
 
-    console.log({ digit });
     // Create a new node for the current digit and move to the next node
     current.next = new ListNode(digit);
     current = current.next;
   }
 
-  console.log(JSON.stringify(dummy, null, 2))
   // Return the resulting linked list starting from dummy.next (skip the dummy node)
   return dummy.next;
 };
