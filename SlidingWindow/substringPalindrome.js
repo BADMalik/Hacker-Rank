@@ -1,27 +1,34 @@
 const palindrome = (s) => {
-    let res = ""
-    if (s.length === 1) return s
-    
-    for (let i = 0;i<s.length;i++) {
-        let left = i
-        let right  = i
+  let res = "";
+  if (s.length === 1) return s;
 
-        while(s[left] === s[right+1]) {
-            i++
-            right++
-        }
+  for (let i = 0; i < s.length; i++) {
+    let left = i;
+    let right = i;
 
-        while (left >=0 && s[left] === s[right] && right<s.length) {
-            if ((right - left) > (res.length - 1))  {
-                res = s.slice(left, right+1)
-            }
-            left--
-            right++
-        }
+    while (s[left] === s[right + 1]) {
+      i++;
+      right++;
     }
 
-    console.log({res})
-    return res;
-}
+    while (left >= 0 && s[left] === s[right] && right < s.length) {
+      console.log({
+        left: left,
+        right: right,
+        sLeft: s[left],
+        sRight: s[right],
+      });
+      if (right - left > res.length - 1) {
+        res = s.slice(left, right );
+        console.log({ res });
+      }
+      left--;
+      right++;
+    }
+  }
 
-palindrome("b6666666666POPc444bb")
+  console.log({ res });
+  return res;
+};
+
+palindrome("b666466666666POPc444bb");
