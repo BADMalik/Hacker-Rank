@@ -87,67 +87,83 @@
 
 // const obj = {
 //   name: "1312312312312",
-//   print: function() {
-//     console.log(this)
+//   print: function () {
+//     console.log(this);
 
 //     function print2() {
-//       console.log(this.name)
+//       console.log(this.name);
 //     }
-
-//     // print2.call()
+//     print2.call(this)
+//     // print2.call(this);
 //   },
-// }
+// };
 
-// obj.print()
+// obj.print();
 
 // let obj = {
-//     name: "Object",
-//     print: () => {
-//       console.log(this)
+//   name: "Object",
+//   print: () => {
+//     console.log(this);
 
-//       const print2 = () => {
-//         console.log(this.name)
-//       }
+//     const print2 = () => {
+//       console.log(this.name);
+//     };
 
-//       return print2.call(obj)
-//     },
-//   }
+//     return print2.call(obj);
+//   },
+// };
 
+// console.log(obj.print());
+// obj.call(obj).print();
 //   obj.print().call(this)
 
-// const me = {
-//   name: "Dillion",
-//   age: 56,
-//   print: function () {
-//     function printName() {
-//       console.log(this.name);
-//     }
-//     printName.call(this);
-//     function printAge() {
-//       console.log(this.age);
-//     }
-//     printAge.call(this);
-//   },
-// };
-// me.print();
+const me = {
+  name: "Dillion",
+  age: 56,
+  print: function () {
+    function printName() {
+      console.log(this.name);
+    }
+    printName.call(this);
+    function printAge() {
+      console.log(this.age);
+    }
+    printAge.call(this);
+  },
+};
+me.print();
 
-// const me2 = {
-//   name: "Dillion",
-//   print: function () {
-//     function printName() {
-//       console.log(this.name);
-//     }
-//     printName.call(this);
-//   },
-// };
-// me2.print();
+const me2 = {
+  name: "Dillion",
+  print: function () {
+    function printName() {
+      console.log(this.name);
+    }
+    printName.call(this);
+  },
+};
+me2.print();
 
+let obj = {
+  name: "Object",
+  print: (() => {
+    console.log(this); // this will refer to `obj` if bound correctly
 
+    const print2 = () => {
+      console.log(this.name);
+    };
 
+    return print2();
+  }).bind(obj), // Bind `obj` to the outer function
+};
 
-function a() {
-  console.log(b)
-  var b = 123
-}
+console.log(obj.print());
 
-a()
+console.log(obj.print());
+
+// function a() {
+//   console.log(b)
+//   var b = 123
+// }
+
+// a()

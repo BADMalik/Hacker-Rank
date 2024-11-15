@@ -1,25 +1,29 @@
 <?php
 
-interface iPerson {
-    function speak ();
+interface iPerson
+{
+    function speak();
 }
 
-Class Person implements iPerson{
-    function speak () {
+class Person implements iPerson
+{
+    function speak()
+    {
         echo "Hello";
     }
 }
 
-Class Student implements iPerson {
-    function speak () {
+class Student implements iPerson
+{
+    function speak()
+    {
         echo "Hi";
     }
 }
 
-function animalSound(iPerson $animal) {
-    return $animal->makeSound();
+function animalSound(iPerson $animal)
+{
+    return $animal->speak();
 }
 
 echo animalSound(new Person());
-
-?>
