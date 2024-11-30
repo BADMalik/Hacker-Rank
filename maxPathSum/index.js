@@ -8,6 +8,7 @@ var solution = function (grid) {
   dp[0][0] = grid[0][0];
   path[0][0] = "(0,0)";
 
+  console.log({ path, dp });
   // Fill the first column
   for (let i = 1; i < rows; i++) {
     dp[i][0] = dp[i - 1][0] + grid[i][0];
@@ -25,6 +26,7 @@ var solution = function (grid) {
   // Fill the rest of the table
   for (let i = 1; i < rows; i++) {
     for (let j = 1; j < columns; j++) {
+      // if above of current is greater than the left of current index
       if (dp[i - 1][j] > dp[i][j - 1]) {
         dp[i][j] = dp[i - 1][j] + grid[i][j];
         path[i][j] = path[i - 1][j] + ` ↓ (${i},${j})`;
